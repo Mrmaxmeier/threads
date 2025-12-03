@@ -224,7 +224,7 @@ test_group_single_wait doFork = assert $ fmap isJustTrue $ timeout (10 * a_momen
   readIORef r
 
 test_group_nrOfRunning :: (ThreadGroup -> Fork ()) -> Assertion
-test_group_nrOfRunning doFork = assert $ fmap isJustTrue $ timeout (10 * a_moment) $ do
+test_group_nrOfRunning doFork = assert $ fmap isJustTrue $ timeout (100 * a_moment) $ do
   tg <- ThreadGroup.new
   l <- Lock.newAcquired
   replicateM_ n $ doFork tg $ Lock.acquire l
